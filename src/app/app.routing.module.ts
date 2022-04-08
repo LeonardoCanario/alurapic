@@ -1,3 +1,4 @@
+import { AuthGuard } from './core/auth/auth.guard';
 import { NotfoundComponent } from './errors/notfound/notfound.component';
 import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
@@ -8,13 +9,18 @@ import { SigninComponent } from './home/signin/signin.component';
 
 const routes: Routes = [
 
-  { path: '', component: SigninComponent },
+  {
+    path: '', component: SigninComponent,
+    canActivate: [AuthGuard]
+  },
 
-  { path: 'user/:userName', component: PhotoListComponent, resolve: {
-    photos: PhotosListResolver
-  } },
+  {
+    path: 'user/:userName', component: PhotoListComponent, resolve: {
+      photos: PhotosListResolver
+    }
+  },
   { path: 'p/add', component: PhotoFormComponent },
-  { path: '**', component: NotfoundComponent},
+  { path: '**', component: NotfoundComponent },
 
 
 ]
