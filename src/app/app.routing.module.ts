@@ -6,12 +6,17 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
 import { PhotosListResolver } from './photos/photo-list/photos-list.resolver';
 import { SigninComponent } from './home/signin/signin.component';
+import { SignupComponent } from './home/signup/signup.component';
 
 const routes: Routes = [
 
   {
     path: '', component: SigninComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'signup', component: SignupComponent,
+
   },
 
   {
